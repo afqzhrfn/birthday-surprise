@@ -4,26 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Wish+Shore&display=swap">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', serif;
+            background-image: url('e:/core memory/Album/143/IMG_20220522_185830_442.JPG'); /* Fixed path for background image */
+            background-size: cover;
+            background-position: center;
+            animation: fadeIn 3s ease-in;
+            color: #4b2e2e; /* Dark brown color */
             text-align: center;
             padding: 50px;
-            background-color: #ffe4e1;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Wish Shore', serif;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #4b2e2e; /* Dark brown color */
+        }
+
         .message {
+            font-family: 'Wish Shore', serif;
             font-size: 24px;
             margin-bottom: 20px;
+            animation: slideIn 2s ease-in-out;
+            color: #4b2e2e; /* Dark brown color */
         }
+
         .question {
-            font-size: 18px;
+            font-size: 20px;
             margin: 20px 0;
+            color: #4b2e2e; /* Dark brown color */
+            padding-top: 20px; /* Add padding to move the button down */
         }
+
         button {
             padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 10px;
+            font-size: 14px;
+            margin-top: 20px; /* Increase the margin-top to move the button down */
             cursor: pointer;
+            background-color: #9b0550;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        #answer {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #9b0550; /* Dark brown color */
+            font-weight: 600;
+        }
+
+        .hidden-message {
+            display: none;
+            font-size: 16px;
+            margin-top: 30px;
+            color: #ffffff;
+        }
+
+        .slideshow img {
+            width: 100%;
+            max-width: 400px;
+            display: none;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -32,27 +93,66 @@
     <div class="message">
        Semoga Allah merahmati setiap langkahmu wahai wanita solehah! 🎉
     </div>
+
     <div class="question">
         Tahu tak apa yang Afiq sangat harapkan daripada Amni?
-        <button onclick="showAnswer()">Kalau dah teka tekanlah hehe</button>
+        <br> <!-- This line break can also help if you need more space -->
+        <button onclick="showAnswer(); playSound()">Kalau dah teka tekanlah hehe</button>
     </div>
-    <div id="answer" style="display:none;">
-<p>Semoga terus tersenyum walau dunia menikam kamu sekuatnya, </p> 
-</p> semoga terus kuat walau ujian datang padamu bagai badai, </p>
-</p>semoga terus diberi kekuatan oleh-Nya dalam setiap langkah yang diambil, </p>
-</p> semoga terus dirahmati oleh Allah dalam setiap keputusan yang dibuat, </p>
-</p>  semoga terus diselimuti kasih sayang dan kebahagiaan di mana pun berada, </p>
-</p>semoga terus berjaya dalam apa jua yang dilakukan dan sentiasa diberi hidayah-Nya, </p>
-</p>  semoga terus dilindungi dari segala mara bahaya dan sentiasa berada di bawah lindungan-Nya,</p>
-</p> semoga terus bersinar dan menjadi inspirasi kepada orang di sekelilingmu,</p>
-</p></p> dan semoga terus dilimpahi dengan rahmat dan barakah sepanjang hayatmu.</p>
-</p>🤍🤍🤍🤍🤍🤍🤍🤍</p>
-        </p>
+
+    <div id="answer" style="line-height: 0.8;">
+        <p>Semoga terus tersenyum walau dunia menikam kamu sekuatnya,</p> 
+        <p>semoga terus kuat walau ujian datang padamu bagai badai,</p>
+        <p>semoga terus diberi kekuatan oleh-Nya dalam setiap langkah yang diambil,</p>
+        <p>semoga terus dirahmati oleh Allah dalam setiap keputusan yang dibuat,</p>
+        <p>semoga terus diselimuti kasih sayang dan kebahagiaan di mana pun berada,</p>
+        <p>semoga terus berjaya dalam apa jua yang dilakukan dan sentiasa diberi hidayah-Nya,</p>
+        <p>semoga terus dilindungi dari segala mara bahaya dan sentiasa berada di bawah lindungan-Nya,</p>
+        <p>semoga terus bersinar dan menjadi inspirasi kepada orang di sekelilingmu,</p>
+        <p>dan semoga terus dilimpahi dengan rahmat dan barakah sepanjang hayatmu.</p>
+        <p>🤍🤍🤍🤍🤍🤍🤍🤍</p>
     </div>
+    
+
+    <div class="slideshow">
+        <img src="e:/core memory/Album/amsu/IMG-20220606-WA0019.jpg" class="slide" style="display:block;">
+        <img src="e:/core memory/Album/amsu/PXL_20221207_030905483.PORTRAIT.jpg" class="slide">
+        <img src="e:/core memory/Album/amsu/SAVE_20220915_202511.jpg" class="slide">
+    </div>
+
+    <div class="hidden-message">
+        💌في حفظ الله في أمانة الله 💌
+    </div>
+
+    <!-- Add the audio element -->
+    <audio id="birthday-sound" src="c:\Users\User\Downloads\NOH SALLEH - RENJANA OFFICIAL LYRIC VIDEO.mp3" preload="auto"></audio>
 
     <script>
         function showAnswer() {
             document.getElementById("answer").style.display = "block";
+        }
+
+        function playSound() {
+            const audio = document.getElementById("birthday-sound");
+            audio.play();
+        }
+
+        document.querySelector('.message').addEventListener('mouseover', function() {
+            document.querySelector('.hidden-message').style.display = 'block';
+        });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.display = 'block';
+        }, 3000);
+
+        // Optional: Play sound when the page loads
+        window.onload = function() {
+            const audio = document.getElementById("birthday-sound");
+            audio.play();
         }
     </script>
 </body>
